@@ -36,7 +36,7 @@
 import { ref } from "vue";
 import { showToast } from "@/utils/vant-ui";
 import { storeToRefs } from "pinia";
-import searchBox from "@/components/searchBox.vue";
+import searchBox from "@/components/SearchBox.vue";
 import { useSearchStore } from "@/stores/search";
 const searchStore = useSearchStore();
 const { hotSearch, historySearch } = storeToRefs(searchStore);

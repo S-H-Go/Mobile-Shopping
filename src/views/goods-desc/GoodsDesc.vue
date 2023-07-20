@@ -26,7 +26,11 @@
     <van-action-bar-icon icon="shop-o" text="店铺" color="#ee0a24" />
     <van-action-bar-icon icon="chat-o" text="客服" />
     <van-action-bar-icon icon="cart-o" text="购物车" />
-    <van-action-bar-button type="warning" text="加入购物车" />
+    <van-action-bar-button
+      type="warning"
+      @click="addProduct"
+      text="加入购物车"
+    />
     <van-action-bar-button type="danger" text="立即购买" />
   </van-action-bar>
 </template>
@@ -37,11 +41,14 @@ import DescDiscount from "@/components/goods-desc/DescDiscount.vue";
 import DescSelected from "@/components/goods-desc/DescSelected.vue";
 import DescComment from "@/components/goods-desc/DescComment.vue";
 import { ref } from "vue";
+import { useUserStore } from "@/stores/user.js";
 import { useRouter, useRoute } from "vue-router";
 import getGoodsDesc from "@/api/goods";
 import { getGoods } from "@/api/home/goods";
+import { showDialog } from "@/utils/vant-ui.js";
 const routes = useRouter();
 const route = useRoute();
+const { addCart } = useUserStore();
 const goodsId = route.path.replace("/goods_desc/", "");
 const goodsDesc = getGoodsDesc(goodsId);
 const goods = getGoods(goodsId);
@@ -55,6 +62,13 @@ function handleScroll(event) {
     showBox.value = true;
   } else {
     showBox.value = false;
+  }
+}
+function addProduct() {
+  if (addCart({ id: goodsId, num: 1 })) {
+    showDialog({ message: "加入购物车成功" });
+  } else {
+    showDialog({ message: "已在购物车中，请不要重复添加" });
   }
 }
 </script>
@@ -75,7 +89,7 @@ function handleScroll(event) {
   opacity: 0;
 }
 
-// 各个卡片的圆角
+/* 各个卡片的圆角 */
 .rounded-card {
   background-color: #f2f2f2f2;
   div {
@@ -83,7 +97,7 @@ function handleScroll(event) {
     border-radius: 15px;
   }
 }
-// 卡片之间的间隔
+/* 卡片之间的间隔 */
 .interval {
   background-color: #f2f2f2;
   height: 15px;
