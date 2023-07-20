@@ -45,7 +45,7 @@ import { useUserStore } from "@/stores/user.js";
 import { useRouter, useRoute } from "vue-router";
 import getGoodsDesc from "@/api/goods";
 import { getGoods } from "@/api/home/goods";
-import { showDialog } from "@/utils/vant-ui.js";
+import { showToast } from "@/utils/vant-ui.js";
 const routes = useRouter();
 const route = useRoute();
 const { addCart } = useUserStore();
@@ -66,9 +66,15 @@ function handleScroll(event) {
 }
 function addProduct() {
   if (addCart({ id: goodsId, num: 1 })) {
-    showDialog({ message: "加入购物车成功" });
+    showToast({
+      message: "加入购物车成功",
+      position: "bottom",
+    });
   } else {
-    showDialog({ message: "已在购物车中，请不要重复添加" });
+    showToast({
+      message: "商品已在购物车中，请不要重复添加",
+      position: "bottom",
+    });
   }
 }
 </script>
