@@ -58,6 +58,15 @@ onMounted(() => {
     return;
   }
 });
+onUpdated(() => {
+  if (loginOrNot.value) {
+    toCart.value = "/cart/" + user.id;
+    myStr.value = "我的";
+  } else {
+    toCart.value = "/cart/null";
+    myStr.value = "未登录";
+  }
+});
 
 router.afterEach((to, from) => {
   //从分类页返回的时候，更换为点击首页
