@@ -59,4 +59,19 @@ function logout() {
   width: 100px;
   height: 40px;
 }
+#logout {
+  width: 20vw;
+  height: 30px;
+  display: block;
+  position: absolute;
+  bottom: 50px;
+  left: 40vw;
+  background-color: #fe284d;
+  border: none;
+  outline: none;
+  border-radius: 100px;
+  color: white;
+  border: none;
+  font-size: 14px;
+}
 </style>
