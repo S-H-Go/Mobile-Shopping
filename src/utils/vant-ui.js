@@ -14,6 +14,15 @@ import "vant/es/notify/style";
 import { showImagePreview } from "vant";
 import "vant/es/image-preview/style";
 
+//  showConfirmDialog
+import { showConfirmDialog } from "vant";
+
 // import { showToast, showNotify, showImagePreview } from "vant";
 
-export { showDialog, showToast, showNotify, showImagePreview };
+export {
+  showDialog,
+  showToast,
+  showNotify,
+  showImagePreview,
+  showConfirmDialog,
+};

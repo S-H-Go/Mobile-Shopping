@@ -23,10 +23,18 @@ export const useUsersStore = defineStore("users", () => {
     if (localStorage.getItem("users") == null) {
       localStorage.setItem("users", JSON.stringify([]));
     }
-    users = ref(JSON.parse(localStorage.getItem("users")));
-    return users.value.find((u) => {
-      return u.phone == user.phone && u.password == user.password;
-    });
+    const temp = users.value.find((u) => u.phone == user.phone);
+    //如果存在该用户
+    if (temp != undefined) {
+      //如果密码正确
+      if (temp.password == user.password) {
+        return temp;
+      } else {
+        return "error";
+      }
+    } else {
+      return null;
+    }
   }
   function saveCart(id, cart) {
     users = ref(JSON.parse(localStorage.getItem("users")));

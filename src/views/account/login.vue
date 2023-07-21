@@ -20,7 +20,7 @@ import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useUsersStore } from "@/stores/users.js";
 import { useUserStore } from "@/stores/user.js";
-import { showDialog } from "@/utils/vant-ui.js";
+import { showDialog, showConfirmDialog } from "@/utils/vant-ui.js";
 const { checkUser } = useUsersStore();
 const { userLogin } = useUserStore();
 const emit = defineEmits(["switchingMethods"]);
@@ -58,17 +58,36 @@ function login() {
     phone: input1.value,
     password: input2.value,
   });
-  if (user == undefined) {
-    showDialog({
-      message: "账号或密码错误",
-    });
-    return;
+  switch (user) {
+    case "error": {
+      showDialog({
+        message: "账号或密码错误",
+      });
+      break;
+    }
+    case null: {
+      showConfirmDialog({
+        message: "该账户还没注册，是否前往注册？",
+      })
+        .then(() => {
+          //跳转到注册页
+          //on confirm
+          router.replace("/account/register");
+        })
+        .catch(() => {
+          // on cancel
+        });
+      break;
+    }
+    default: {
+      userLogin(user);
+      showDialog({
+        message: "登陆成功",
+      });
+      router.replace("/my");
+      break;
+    }
   }
-  userLogin(user);
-  showDialog({
-    message: "登陆成功",
-  });
-  router.replace("/my");
 }
 </script>
 
