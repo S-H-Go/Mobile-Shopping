@@ -50,7 +50,6 @@ function register() {
     });
     return;
   }
-  console.log(phoneReg.test(input1.value));
   if (phoneReg.test(input1.value)) {
     if (
       addUser({
@@ -62,6 +61,7 @@ function register() {
       showDialog({
         message: "注册成功",
       });
+      router.replace("/account/login");
     } else {
       showDialog({
         message: "注册失败，请不要重复注册",
