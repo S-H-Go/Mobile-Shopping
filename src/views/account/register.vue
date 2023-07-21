@@ -43,7 +43,8 @@ function getData(inp1, inp2) {
 }
 
 function register() {
-  const phoneReg = /^1[3|4|5|7|8][0-9]{9}$/;
+  // const phoneReg = /^1[3|4|5|7|8][0-9]{9}$/;
+  const phoneReg = /.*/;
   if (method.value == "账号密码注册") {
     showDialog({
       message: "暂不支持验证码注册",
