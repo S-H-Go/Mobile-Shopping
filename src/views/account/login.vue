@@ -22,7 +22,7 @@ import { useUsersStore } from "@/stores/users.js";
 import { useUserStore } from "@/stores/user.js";
 import { showDialog } from "@/utils/vant-ui.js";
 const { checkUser } = useUsersStore();
-const { setUser, changeLoginOrNOot } = useUserStore();
+const { userLogin } = useUserStore();
 const emit = defineEmits(["switchingMethods"]);
 const method = ref("短信验证码登录");
 const router = useRouter();
@@ -64,8 +64,7 @@ function login() {
     });
     return;
   }
-  setUser(user);
-  changeLoginOrNOot(true);
+  userLogin(user);
   showDialog({
     message: "登陆成功",
   });

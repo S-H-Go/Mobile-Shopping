@@ -33,15 +33,15 @@ import { useRouter } from "vue-router";
 const userStore = useUserStore();
 const router = useRouter();
 const { loginOrNot, user } = storeToRefs(userStore);
-const { changeLoginOrNOot } = userStore;
+const { userLogout } = userStore;
 const { saveCart } = useUsersStore();
 function toLogin() {
   router.replace("/account/login");
 }
 function logout() {
-  changeLoginOrNOot(false);
   // 退出登录时保存购物车信息
   saveCart(user.value.id, user.value.cart);
+  userLogout();
   router.push("/home");
 }
 </script>

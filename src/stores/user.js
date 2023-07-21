@@ -6,24 +6,24 @@ export const useUserStore = defineStore("user", () => {
   let user = ref({});
   // 初始化
   if (JSON.parse(localStorage.getItem("user") != null)) {
-    user = ref(JSON.parse(localStorage.getItem("user")));
+    user.value = JSON.parse(localStorage.getItem("user"));
     var cart = toRef(user.value, "cart");
     loginOrNot = ref(true);
   } else {
     loginOrNot = ref(false);
   }
-  function changeLoginOrNOot(value) {
-    loginOrNot.value = value;
-    if (value) {
-      localStorage.setItem("user", JSON.stringify(user.value));
-    }
-    if (value == false) {
-      localStorage.removeItem("user");
-    }
+
+  function userLogin(userInfo) {
+    loginOrNot.value = true;
+    user.value = userInfo;
+    cart = toRef(user.value, "cart");
+    localStorage.setItem("user", JSON.stringify(user));
   }
 
-  function setUser(userInfo) {
-    user.value = userInfo;
+  function userLogout() {
+    user.value = { cart: [] };
+    loginOrNot.value = false;
+    localStorage.removeItem("user");
   }
 
   function addCart(product) {
@@ -36,7 +36,7 @@ export const useUserStore = defineStore("user", () => {
     }
   }
 
-  const getCart = computed(() => cart.value);
+  const getCart = computed(() => user.value.cart);
   function updateCart(goodsId, num) {
     const index = cart.value.findIndex((item) => item.id === goodsId);
     cart.value[index].num = num;
@@ -52,8 +52,8 @@ export const useUserStore = defineStore("user", () => {
   return {
     user,
     loginOrNot,
-    changeLoginOrNOot,
-    setUser,
+    userLogin,
+    userLogout,
     addCart,
     getCart,
     updateCart,
