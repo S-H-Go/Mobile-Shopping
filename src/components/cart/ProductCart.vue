@@ -14,9 +14,9 @@
         >
           <template #footer>
             <div class="goodsNum">
-              <van-button size="mini" @click="sub">-</van-button>
+              <van-button size="mini" @click.stop="sub">-</van-button>
               <span class="num">{{ props.goodsNum }}</span>
-              <van-button size="mini" @click="add">+</van-button>
+              <van-button size="mini" @click.stop="add">+</van-button>
             </div>
           </template>
         </van-card>
