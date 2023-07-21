@@ -25,8 +25,15 @@ export const useUsersStore = defineStore("users", () => {
       return u.phone == user.phone && u.password == user.password;
     });
   }
+  function saveCart(id, cart) {
+    users = ref(JSON.parse(localStorage.getItem("users")));
+    const index = users.value.findIndex((item) => item.id == id);
+    users.value[index].cart = cart;
+    localStorage.setItem("users", JSON.stringify(users.value));
+  }
   return {
     addUser,
     checkUser,
+    saveCart,
   };
 });
