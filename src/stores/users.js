@@ -3,13 +3,13 @@ import { defineStore } from "pinia";
 
 export const useUsersStore = defineStore("users", () => {
   let users = ref([]);
-  let id = ref(0);
+  let id = 0;
   function addUser(user) {
     if (localStorage.getItem("users") == null) {
       localStorage.setItem("users", JSON.stringify([]));
     }
     users = ref(JSON.parse(localStorage.getItem("users")));
-    user.id = id.value++;
+    user.id = id++;
     user.cart = [];
     if (users.value.find((u) => u.phone === user.phone) == null) {
       users.value.push(user);
