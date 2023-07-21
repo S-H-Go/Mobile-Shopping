@@ -10,6 +10,7 @@
           :desc="desc.selected.selected"
           :title="goods.title"
           :thumb="goods.src"
+          @click="toGoodsDesc"
         >
           <template #footer>
             <div class="goodsNum">
@@ -39,6 +40,8 @@ import { ref, onUpdated } from "vue";
 import getGoodsDesc from "@/api/goods/";
 import { getGoods } from "@/api/home/goods.js";
 import { useUserStore } from "@/stores/user";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const { deleteCart, updateCart } = useUserStore();
 const props = defineProps(["goodsId", "goodsNum"]);
 const emit = defineEmits(["updateNum"]);
@@ -59,6 +62,9 @@ function sub() {
 function add() {
   updateCart(goods.value.id, props.goodsNum + 1);
   emit("updateNum");
+}
+function toGoodsDesc() {
+  router.push("/goods_desc/" + goods.value.id);
 }
 </script>
 
