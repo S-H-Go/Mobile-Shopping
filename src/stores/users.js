@@ -20,6 +20,9 @@ export const useUsersStore = defineStore("users", () => {
     }
   }
   function checkUser(user) {
+    if (localStorage.getItem("users") == null) {
+      localStorage.setItem("users", JSON.stringify([]));
+    }
     users = ref(JSON.parse(localStorage.getItem("users")));
     return users.value.find((u) => {
       return u.phone == user.phone && u.password == user.password;
