@@ -17,7 +17,7 @@ export const useUserStore = defineStore("user", () => {
     loginOrNot.value = true;
     user.value = userInfo;
     cart = toRef(user.value, "cart");
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user.value));
   }
 
   function userLogout() {
