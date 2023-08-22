@@ -1,9 +1,9 @@
 const aaaaa = {
   swipesImages: [
-    "/src/assets/images/goods/g1.webp",
-    "/src/assets/images/goods/g1.webp",
-    "/src/assets/images/goods/g1.webp",
-    "/src/assets/images/goods/g1.webp",
+    "/images/goods/g1.webp",
+    "/images/goods/g1.webp",
+    "/images/goods/g1.webp",
+    "/images/goods/g1.webp",
   ],
   discount: {
     moneyOff: ["满2000减220", "满1500减100"],

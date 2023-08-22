@@ -1,9 +1,9 @@
 const aaaac = {
   swipesImages: [
-    "/src/assets/images/goods/g3.webp",
-    "/src/assets/images/goods/g3.webp",
-    "/src/assets/images/goods/g3.webp",
-    "/src/assets/images/goods/g3.webp",
+    "/images/goods/g3.webp",
+    "/images/goods/g3.webp",
+    "/images/goods/g3.webp",
+    "/images/goods/g3.webp",
   ],
   discount: {
     moneyOff: ["满80减10", "满50减5"],

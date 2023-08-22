@@ -1,9 +1,9 @@
 const aaaad = {
   swipesImages: [
-    "/src/assets/images/goods/g4.webp",
-    "/src/assets/images/goods/g4.webp",
-    "/src/assets/images/goods/g4.webp",
-    "/src/assets/images/goods/g4.webp",
+    "/images/goods/g4.webp",
+    "/images/goods/g4.webp",
+    "/images/goods/g4.webp",
+    "/images/goods/g4.webp",
   ],
   discount: {
     moneyOff: ["满200减30", "满150减20"], // 修改满减优惠金额

@@ -1,9 +1,9 @@
 const aaaah = {
   swipesImages: [
-    "/src/assets/images/goods/g8.webp",
-    "/src/assets/images/goods/g8.webp",
-    "/src/assets/images/goods/g8.webp",
-    "/src/assets/images/goods/g8.webp",
+    "/images/goods/g8.webp",
+    "/images/goods/g8.webp",
+    "/images/goods/g8.webp",
+    "/images/goods/g8.webp",
   ],
   discount: {
     moneyOff: ["满1000减100", "满800减80"], // 修改满减优惠金额

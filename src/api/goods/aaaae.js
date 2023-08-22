@@ -1,9 +1,9 @@
 const aaaae = {
   swipesImages: [
-    "/src/assets/images/goods/g5.webp",
-    "/src/assets/images/goods/g5.webp",
-    "/src/assets/images/goods/g5.webp",
-    "/src/assets/images/goods/g5.webp",
+    "/images/goods/g5.webp",
+    "/images/goods/g5.webp",
+    "/images/goods/g5.webp",
+    "/images/goods/g5.webp",
   ],
   discount: {
     moneyOff: ["满25减3", "满15减1"], // 修改满减优惠金额
